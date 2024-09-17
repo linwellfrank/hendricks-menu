@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hendrick's   
+ Eats Fast Food Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        .menu-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #FFD700;
+            border-radius: 10px;
+            overflow: visible; /* Allow content to overflow */
+            text-align: center; /* Center the content within the container */
+        }
+        .header {
+            background-color: #8B0000;
+            color: #FFD700;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            font-family: Impact, sans-serif; /* Change font to Impact */
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .header h2 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+        .menu-content {
+            padding: 20px;
+            color: #000;
+        }
+        .menu-section {
+            margin-bottom: 20px;
+            text-align: center; /* Center the menu section */
+        }
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .item-description {
+            font-style: italic;
+            font-size: 0.9em;
+            text-align: center; /* Center the description */
+        }
+        .footer {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        .food-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .order-form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center; /* Center the form */
+        }
+        .order-form h2 {
+            color: #8B0000;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width:   
+ 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .submit-btn {
+            background-color:   
+ #8B0000;
+            color: #740202;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .submit-btn:hover {
+            background-color:   
+ #6B0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="header">
+            <h1>Hendrick's Eats</h1>
+            <h2>Fast Food Menu</h2>
+        </div>
+        <div class="menu-content">
+            <img src="/images/bunnychow.jfif" alt="Fast food combo" class="food-image" />
+
+            <div class="menu-section">
+                <h2>Smokey Grill Combos</h2>
+                <div class="menu-item">
+                    <span>Classic Burger & Chips</span>
+                    <span>R50</span>
+                </div>
+                <div class="menu-item">
+                    <span>Grill Master's Combo</span>
+                    <span>R60</span>
+                </div>
+                <div class="item-description">(Sosatie, wors, roll, and chicken)</div>
+                <div class="menu-item">
+                    <span>Smokey Feast Stack</span>
+                    <span>R100</span>
+                </div>
+                <div class="item-description">(Chicken quarter leg, wors, pork chop, potato salad, roll)</div>
+            </div>
+
+            <div class="menu-section">
+                <h2>Rotis and Bunny chows</h2>
+                <div class="menu-item">
+                    <span>Chicken rooties</span>
+                    <span>R40</span>
+                </div>
+                <div class="menu-item">
+                    <span>Beef rooties</span>
+                    <span>R50</span>
+                </div>
+                <div class="menu-item">
+                    <span>Chicken bunny chow</span>
+                    <span>R40</span>
+                </div>
+                <div class="menu-item">
+                    <span>Beef bunny chow</span>
+                    <span>R50</span>
+                </div>
+            </div>
+
+            <div class="order-form">
+                <h2>Pre-order Form</h2>
+                <form id="preorderForm">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>   
+
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label   
+ for="item">Menu Item:</label>
+                        <select id="item" name="item" required>
+                            <option value="">Select an item</option>
+                            <option value="Classic Burger & Chips">Classic Burger & Chips</option>
+                            <option value="Grill Master's Combo">Grill Master's Combo</option>
+                            <option value="Smokey Feast Stack">Smokey Feast Stack</option>
+                            <option value="Chicken rooties">Chicken rooties</option>
+                            <option value="Beef rooties">Beef rooties</option>
+                            <option value="Chicken bunny chow">Chicken bunny chow</option>
+                            <option value="Beef bunny chow">Beef bunny chow</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <input type="number" id="quantity" name="quantity" min="1"   
+ required>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-instructions">Special Instructions:</label>
+                        <textarea id="special-instructions" name="special-instructions"></textarea>
+                    </div>
+                    <button type="submit"   
+ class="submit-btn">Submit Pre-order</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            WhatsApp: 072 576 3719 to order. Available weekends only. Place orders by Friday.<br>
+            Delivery fee: R30 for 2+ items or collect at Willowdene Village, Fairview.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('preorderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            const formData = new FormData(this);
+            const orderData = Object.fromEntries(formData.entries());
+
+            // Here you would typically send this data to your server
+            // For demonstration, we'll just log it to the console
+            console.log('Order submitted:', orderData);
+
+            // You can replace this alert with a more user-friendly message
+            alert('Thank you for your pre-order! We will contact you to confirm.');
+
+            // Reset the form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
