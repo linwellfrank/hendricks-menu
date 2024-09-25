@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hendrick's   
- Eats Fast Food Menu</title>
+    <title>Hendrick's Eats Fast Food Menu</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,23 +17,15 @@
             margin: 0 auto;
             background-color: #FFD700;
             border-radius: 10px;
-            overflow: visible; /* Allow content to overflow */
-            text-align: center; /* Center the content within the container */
+            overflow: hidden;
         }
         .header {
             background-color: #8B0000;
             color: #FFD700;
             padding: 20px;
             text-align: center;
-        }
-        .header h1 {
-            font-family: Impact, sans-serif; /* Change font to Impact */
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        .header h2 {
             font-size: 24px;
-            font-weight: normal;
+            font-weight: bold;
         }
         .menu-content {
             padding: 20px;
@@ -42,7 +33,11 @@
         }
         .menu-section {
             margin-bottom: 20px;
-            text-align: center; /* Center the menu section */
+        }
+        .menu-section h2 {
+            color: #8B0000;
+            border-bottom: 2px solid #8B0000;
+            padding-bottom: 5px;
         }
         .menu-item {
             display: flex;
@@ -52,7 +47,6 @@
         .item-description {
             font-style: italic;
             font-size: 0.9em;
-            text-align: center; /* Center the description */
         }
         .footer {
             background-color: #8B0000;
@@ -72,7 +66,6 @@
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
-            text-align: center; /* Center the form */
         }
         .order-form h2 {
             color: #8B0000;
@@ -85,16 +78,14 @@
             margin-bottom: 5px;
         }
         .form-group input, .form-group select, .form-group textarea {
-            width:   
- 100%;
+            width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
         .submit-btn {
-            background-color:   
- #8B0000;
-            color: #740202;
+            background-color: #8B0000;
+            color: #fff;
             border: none;
             padding: 10px 20px;
             border-radius: 4px;
@@ -102,20 +93,32 @@
             font-size: 16px;
         }
         .submit-btn:hover {
-            background-color:   
- #6B0000;
+            background-color: #6B0000;
+        }
+        #whatsappButton {
+            display: none;
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        #whatsappButton:hover {
+            background-color: #128C7E;
         }
     </style>
 </head>
 <body>
     <div class="menu-container">
         <div class="header">
-            <h1>Hendrick's Eats</h1>
-            <h2>Fast Food Menu</h2>
+            Hendrick's Eats Fast Food MENU
         </div>
         <div class="menu-content">
-            <img src="/images/bunnychow.jfif" alt="Fast food combo" />
-
+            <img src="/images/bunnychow.jfif" alt="Fast food combo" class="food-image" />
+            
             <div class="menu-section">
                 <h2>Smokey Grill Combos</h2>
                 <div class="menu-item">
@@ -162,13 +165,11 @@
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Phone:</label>   
-
+                        <label for="phone">Phone:</label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
                     <div class="form-group">
-                        <label   
- for="item">Menu Item:</label>
+                        <label for="item">Menu Item:</label>
                         <select id="item" name="item" required>
                             <option value="">Select an item</option>
                             <option value="Classic Burger & Chips">Classic Burger & Chips</option>
@@ -182,16 +183,15 @@
                     </div>
                     <div class="form-group">
                         <label for="quantity">Quantity:</label>
-                        <input type="number" id="quantity" name="quantity" min="1"   
- required>
+                        <input type="number" id="quantity" name="quantity" min="1" required>
                     </div>
                     <div class="form-group">
                         <label for="special-instructions">Special Instructions:</label>
                         <textarea id="special-instructions" name="special-instructions"></textarea>
                     </div>
-                    <button type="submit"   
- class="submit-btn">Submit Pre-order</button>
+                    <button type="submit" class="submit-btn">Submit Pre-order</button>
                 </form>
+                <button id="whatsappButton">Send Order via WhatsApp</button>
             </div>
         </div>
         <div class="footer">
@@ -201,22 +201,53 @@
     </div>
 
     <script>
+        let orderData = {};
+
         document.getElementById('preorderForm').addEventListener('submit', function(e) {
             e.preventDefault();
-
+            
             // Collect form data
             const formData = new FormData(this);
-            const orderData = Object.fromEntries(formData.entries());
+            orderData = Object.fromEntries(formData.entries());
 
-            // Here you would typically send this data to your server
-            // For demonstration, we'll just log it to the console
-            console.log('Order submitted:', orderData);
+            // Show the WhatsApp button
+            document.getElementById('whatsappButton').style.display = 'block';
 
-            // You can replace this alert with a more user-friendly message
-            alert('Thank you for your pre-order! We will contact you to confirm.');
+            // Hide the submit button
+            this.querySelector('.submit-btn').style.display = 'none';
 
-            // Reset the form
-            this.reset();
+            // Disable form fields
+            const formFields = this.elements;
+            for (let i = 0; i < formFields.length; i++) {
+                formFields[i].disabled = true;
+            }
+
+            // Show a confirmation message to the user
+            alert('Thank you for your pre-order! Click the WhatsApp button to send your order details.');
+        });
+
+        document.getElementById('whatsappButton').addEventListener('click', function() {
+            // Create the message body
+            let message = `New Order:\n`;
+            message += `Name: ${orderData.name}\n`;
+            message += `Phone: ${orderData.phone}\n`;
+            message += `Item: ${orderData.item}\n`;
+            message += `Quantity: ${orderData.quantity}\n`;
+            message += `Special Instructions: ${orderData['special-instructions'] || 'None'}\n`;
+
+            // Open WhatsApp with the pre-filled message
+            window.open(`https://wa.me/27725763719?text=Name%3A%0A%20Phone%3A%0A%20Item%3A%0AQuantity%3A%0ASpecial%20Instructions%3A%0A`, '_blank');
+
+            // Reset the form and hide the WhatsApp button
+            document.getElementById('preorderForm').reset();
+            this.style.display = 'none';
+            document.querySelector('.submit-btn').style.display = 'block';
+
+            // Re-enable form fields
+            const formFields = document.getElementById('preorderForm').elements;
+            for (let i = 0; i < formFields.length; i++) {
+                formFields[i].disabled = false;
+            }
         });
     </script>
 </body>
